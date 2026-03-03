@@ -739,4 +739,14 @@ body {
   .contact {
     padding: 20vh 0;
   }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transition: all 0.25s cubic-bezier(0.5, 0, 0, 1);
+  }
+
+  .animate-on-scroll.animated {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
 }
