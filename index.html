@@ -35,23 +35,23 @@
       </div>
     </nav>
 
-    <!-- Герой (первый экран) -->
+    <!-- Герой (первый экран) - появляется сразу, без анимации -->
     <section class="hero" id="главная">
       <div class="container">
         <div class="hero-content">
-          <h1>
+          <h1 class="animate-on-scroll animate-from-left">
             Разработка сайтов, <span>которые работают</span> на ваш бизнес
           </h1>
-          <p>
+          <p class="animate-on-scroll animate-from-left" data-delay="200">
             Создаём современные, быстрые и продающие сайты под ключ. От лендинга
             до интернет-магазина.
           </p>
-          <div>
+          <div class="animate-on-scroll animate-from-left" data-delay="400">
             <a href="#контакты" class="btn">Обсудить проект</a>
             <a href="#портфолио" class="btn btn-outline">Портфолио</a>
           </div>
         </div>
-        <div class="hero-image">
+        <div class="hero-image animate-on-scroll animate-from-right">
           <img
             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Ccircle cx='200' cy='150' r='120' fill='%23e0e0ff' /%3E%3Cpath d='M140 110 L260 110 L230 190 L170 190 Z' fill='%233b3bff' opacity='0.7' /%3E%3Ccircle cx='160' cy='140' r='15' fill='white' /%3E%3Ccircle cx='240' cy='140' r='15' fill='white' /%3E%3Cpath d='M180 190 L220 190 L210 220 L190 220 Z' fill='%232a2ad9' /%3E%3C/svg%3E"
             alt="Разработка сайтов"
@@ -63,13 +63,21 @@
     <!-- Преимущества -->
     <section class="features">
       <div class="container">
-        <h2 class="section-title">Почему выбирают нас</h2>
-        <p class="section-subtitle">
+        <h2 class="section-title animate-on-scroll animate-from-bottom">
+          Почему выбирают нас
+        </h2>
+        <p
+          class="section-subtitle animate-on-scroll animate-from-bottom"
+          data-delay="200"
+        >
           Мы не просто пишем код — мы создаём инструмент для роста вашего
           бизнеса
         </p>
         <div class="features-grid">
-          <div class="feature-card">
+          <div
+            class="feature-card animate-on-scroll animate-from-bottom"
+            data-delay="100"
+          >
             <div class="feature-icon"><i class="fas fa-rocket"></i></div>
             <h3>Быстрый старт</h3>
             <p>
@@ -77,7 +85,10 @@
               месяце.
             </p>
           </div>
-          <div class="feature-card">
+          <div
+            class="feature-card animate-on-scroll animate-from-bottom"
+            data-delay="200"
+          >
             <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
             <h3>Адаптивность</h3>
             <p>
@@ -85,7 +96,10 @@
               монитора.
             </p>
           </div>
-          <div class="feature-card">
+          <div
+            class="feature-card animate-on-scroll animate-from-bottom"
+            data-delay="300"
+          >
             <div class="feature-icon"><i class="fas fa-search"></i></div>
             <h3>SEO оптимизация</h3>
             <p>
@@ -93,7 +107,10 @@
               полюбить вас.
             </p>
           </div>
-          <div class="feature-card">
+          <div
+            class="feature-card animate-on-scroll animate-from-bottom"
+            data-delay="400"
+          >
             <div class="feature-icon"><i class="fas fa-headset"></i></div>
             <h3>Поддержка</h3>
             <p>
@@ -108,12 +125,20 @@
     <!-- Услуги -->
     <section class="services" id="услуги">
       <div class="container">
-        <h2 class="section-title">Наши услуги</h2>
-        <p class="section-subtitle">
+        <h2 class="section-title animate-on-scroll animate-from-bottom">
+          Наши услуги
+        </h2>
+        <p
+          class="section-subtitle animate-on-scroll animate-from-bottom"
+          data-delay="200"
+        >
           Прозрачные цены и индивидуальный подход к каждой задаче
         </p>
         <div class="services-grid">
-          <div class="service-item">
+          <div
+            class="service-item animate-on-scroll animate-scale"
+            data-delay="100"
+          >
             <i class="fas fa-globe fa-2x" style="color: #3b3bff"></i>
             <h3>Сайт-визитка</h3>
             <div class="service-price">от 45 000 ₽</div>
@@ -122,7 +147,10 @@
               впечатления.
             </p>
           </div>
-          <div class="service-item">
+          <div
+            class="service-item animate-on-scroll animate-scale"
+            data-delay="200"
+          >
             <i class="fas fa-shopping-cart fa-2x" style="color: #3b3bff"></i>
             <h3>Интернет-магазин</h3>
             <div class="service-price">от 120 000 ₽</div>
@@ -130,7 +158,10 @@
               Каталог, корзина, оплата и доставка — полноценная торговля онлайн.
             </p>
           </div>
-          <div class="service-item">
+          <div
+            class="service-item animate-on-scroll animate-scale"
+            data-delay="300"
+          >
             <i class="fas fa-tachometer-alt fa-2x" style="color: #3b3bff"></i>
             <h3>Landing page</h3>
             <div class="service-price">от 35 000 ₽</div>
@@ -138,7 +169,10 @@
               Одностраничный сайт для сбора лидов и рекламных кампаний.
             </p>
           </div>
-          <div class="service-item">
+          <div
+            class="service-item animate-on-scroll animate-scale"
+            data-delay="400"
+          >
             <i class="fas fa-cogs fa-2x" style="color: #3b3bff"></i>
             <h3>Поддержка / доработка</h3>
             <div class="service-price">от 5 000 ₽/мес</div>
@@ -153,12 +187,20 @@
     <!-- Портфолио -->
     <section class="portfolio" id="портфолио">
       <div class="container">
-        <h2 class="section-title">Последние проекты</h2>
-        <p class="section-subtitle">
+        <h2 class="section-title animate-on-scroll animate-from-bottom">
+          Последние проекты
+        </h2>
+        <p
+          class="section-subtitle animate-on-scroll animate-from-bottom"
+          data-delay="200"
+        >
           Каждый проект уникален — вот несколько примеров наших работ
         </p>
         <div class="portfolio-grid">
-          <div class="portfolio-item">
+          <div
+            class="portfolio-item animate-on-scroll animate-from-left"
+            data-delay="100"
+          >
             <div class="portfolio-img">
               <i class="fas fa-laptop-code fa-3x"></i>
             </div>
@@ -167,7 +209,10 @@
               <p>Сайт-визитка с онлайн-записью</p>
             </div>
           </div>
-          <div class="portfolio-item">
+          <div
+            class="portfolio-item animate-on-scroll animate-from-bottom"
+            data-delay="200"
+          >
             <div class="portfolio-img">
               <i class="fas fa-store fa-3x"></i>
             </div>
@@ -176,7 +221,10 @@
               <p>Интернет-магазин с корзиной и оплатой</p>
             </div>
           </div>
-          <div class="portfolio-item">
+          <div
+            class="portfolio-item animate-on-scroll animate-from-right"
+            data-delay="300"
+          >
             <div class="portfolio-img">
               <i class="fas fa-briefcase fa-3x"></i>
             </div>
@@ -193,19 +241,29 @@
     <section class="contact" id="контакты">
       <div class="container">
         <div class="contact-info">
-          <h2>Давайте обсудим ваш проект</h2>
-          <p>
+          <h2 class="animate-on-scroll animate-from-left">
+            Давайте обсудим ваш проект
+          </h2>
+          <p class="animate-on-scroll animate-from-left" data-delay="200">
             Оставьте заявку прямо сейчас, и мы свяжемся с вами в ближайшее
             время, чтобы обсудить детали и сделать вам предложение.
           </p>
           <ul class="contact-details">
-            <li><i class="fas fa-phone-alt"></i> +7 (999) 123-45-67</li>
-            <li><i class="fas fa-envelope"></i> hello@webstudio.ru</li>
-            <li>
+            <li class="animate-on-scroll animate-from-left" data-delay="300">
+              <i class="fas fa-phone-alt"></i> +7 (999) 123-45-67
+            </li>
+            <li class="animate-on-scroll animate-from-left" data-delay="400">
+              <i class="fas fa-envelope"></i> hello@webstudio.ru
+            </li>
+            <li class="animate-on-scroll animate-from-left" data-delay="500">
               <i class="fas fa-map-marker-alt"></i> Москва, ул. Программная, 15
             </li>
           </ul>
-          <div style="margin-top: 30px">
+          <div
+            class="animate-on-scroll animate-from-left"
+            data-delay="600"
+            style="margin-top: 30px"
+          >
             <a href="#" style="color: white; margin-right: 20px"
               ><i class="fab fa-telegram fa-2x"></i
             ></a>
@@ -215,7 +273,7 @@
             <a href="#" style="color: white"><i class="fab fa-vk fa-2x"></i></a>
           </div>
         </div>
-        <div class="contact-form">
+        <div class="contact-form animate-on-scroll animate-from-right">
           <form action="#" method="post">
             <input type="text" placeholder="Ваше имя" required />
             <input type="email" placeholder="Email" required />
