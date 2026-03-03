@@ -202,7 +202,7 @@ body {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(567px, 1fr));
   gap: 25px;
 }
 
@@ -587,6 +587,10 @@ body {
   .btn-outline {
     margin-left: 0;
     margin-top: 10px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 
   .carousel-container {
