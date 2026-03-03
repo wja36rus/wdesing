@@ -21,11 +21,16 @@ body {
 
 /* Навигация */
 .navbar {
-  background-color: #000000;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
   z-index: 100;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-scrolled {
+  background-color: #000000 !important; /* Черный фон при скролле */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
 }
 
 .nav-wrapper {
@@ -60,7 +65,7 @@ body {
 
 /* Герой */
 .hero {
-  padding: 276px 0;
+  padding: 311px 0;
   /* background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 100%); */
   background-image: url("./images/bg.jpg");
   background-size: cover;
@@ -119,7 +124,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #2a2ad9;
+  background-color: #20788a;
   transform: translateY(-2px);
 }
 
@@ -227,7 +232,7 @@ body {
 
 /* Портфолио */
 .portfolio {
-  padding: 80px 0;
+  padding: 234px 0;
 }
 
 .portfolio-grid {
@@ -284,7 +289,7 @@ body {
 
 /* СЕКЦИЯ: ОТЗЫВЫ */
 .testimonials {
-  padding: 80px 0;
+  padding: 209px 0;
   color: white;
 }
 
@@ -359,7 +364,7 @@ body {
 
 .author-info p {
   font-size: 14px;
-  color: #b0b0d0;
+  color: #ffffff;
 }
 
 .carousel-btn {
@@ -408,7 +413,7 @@ body {
 
 /* Контакты */
 .contact {
-  padding: 80px 0;
+  padding: 195px 0;
   background: linear-gradient(0deg, #3ab6ce 0%, #000000 100%);
   color: white;
 }
@@ -426,7 +431,7 @@ body {
 }
 
 .contact-info p {
-  color: #b0b0d0;
+  color: #ffffff;
   margin-bottom: 30px;
 }
 
@@ -469,7 +474,7 @@ body {
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: #8888aa;
+  color: #3ab6ce;
 }
 
 .contact-form textarea {
@@ -483,7 +488,7 @@ body {
 }
 
 .contact-form .btn:hover {
-  background-color: #5e5eff;
+  background-color: #216370;
 }
 
 /* Футер */
@@ -632,14 +637,13 @@ body {
 
 .tech-item:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(59, 59, 255, 0.15);
-  border-color: #3ab6ce;
+  box-shadow: 0 0px 40px 30px #3be0ff26;
 }
 
 .tech-icon {
   font-size: 48px;
   margin-bottom: 15px;
-  color: #3ab6ce;
+  color: #ffffff;
   transition: transform 0.3s ease;
 }
 

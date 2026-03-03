@@ -259,3 +259,17 @@ $(document).ready(function () {
     $(".hero .animate-on-scroll").addClass("animated");
   }, 300);
 });
+
+// ===== ИЗМЕНЕНИЕ ФОНА НАВБАРА ПРИ СКРОЛЛЕ =====
+$(window).on("scroll", function () {
+  if ($(this).scrollTop() > 50) {
+    $(".navbar").addClass("navbar-scrolled");
+  } else {
+    $(".navbar").removeClass("navbar-scrolled");
+  }
+});
+
+// Запускаем при загрузке, чтобы сразу применить правильный фон
+if ($(window).scrollTop() > 50) {
+  $(".navbar").addClass("navbar-scrolled");
+}
