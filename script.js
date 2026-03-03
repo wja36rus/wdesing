@@ -236,7 +236,7 @@ $(document).ready(function () {
     $(".nav-links a").each(function () {
       $(this).removeClass("active").css({
         "font-weight": "500",
-        color: "#1e1e2f",
+        color: "#ffffff",
       });
     });
 
@@ -245,7 +245,7 @@ $(document).ready(function () {
       if ($activeLink.length) {
         $activeLink.addClass("active").css({
           "font-weight": "700",
-          color: "#3b3bff",
+          color: "#3ab6ce",
         });
       }
     }
