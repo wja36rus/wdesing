@@ -10,7 +10,7 @@ body {
   line-height: 1.6;
   color: #1e1e2f;
   background-color: #ffffff;
-  overflow-x: hidden; /* предотвращаем горизонтальный скролл при анимациях */
+  overflow-x: hidden;
 }
 
 .container {
@@ -282,10 +282,136 @@ body {
   color: #4a4a68;
 }
 
+/* СЕКЦИЯ: ОТЗЫВЫ */
+.testimonials {
+  padding: 80px 0;
+  background: linear-gradient(
+180deg, #1e1e2f 0%, #2d2d44 100%);
+  color: white;
+}
+
+.testimonials-carousel {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  flex: 1;
+  border-radius: 24px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.testimonial-card {
+  min-width: 100%;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-sizing: border-box;
+}
+
+.testimonial-rating {
+  margin-bottom: 20px;
+  color: #ffd700;
+}
+
+.testimonial-rating i {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.testimonial-text {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #e0e0ff;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.author-avatar {
+  font-size: 50px;
+  color: #7b7bff;
+}
+
+.author-info h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.author-info p {
+  font-size: 14px;
+  color: #b0b0d0;
+}
+
+.carousel-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.carousel-btn:hover {
+  background: #7b7bff;
+  border-color: #7b7bff;
+}
+
+.carousel-btn i {
+  font-size: 20px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background: #7b7bff;
+  transform: scale(1.2);
+}
+
 /* Контакты */
 .contact {
   padding: 80px 0;
-  background-color: #1e1e2f;
+  background: linear-gradient(0deg, #1e1e2f 0%, #2d2d44 100%);
   color: white;
 }
 
@@ -329,10 +455,18 @@ body {
   padding: 15px 20px;
   border-radius: 16px;
   border: none;
-  background: #2d2d44;
+  background: rgba(255, 255, 255, 0.1);
   color: white;
   font-family: "Inter", sans-serif;
   margin-bottom: 20px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #7b7bff;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .contact-form input::placeholder,
@@ -372,40 +506,33 @@ body {
   color: white;
 }
 
-/* ========== АНИМАЦИИ ========== */
-/* Базовые стили для элементов с анимацией */
+/* ===== АНИМАЦИИ ===== */
 .animate-on-scroll {
   opacity: 0;
   transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
 }
 
-/* Анимация появления */
 .animate-on-scroll.animated {
   opacity: 1;
   transform: translate(0, 0) scale(1);
 }
 
-/* Слева */
 .animate-from-left {
   transform: translateX(-50px);
 }
 
-/* Справа */
 .animate-from-right {
   transform: translateX(50px);
 }
 
-/* Снизу */
 .animate-from-bottom {
   transform: translateY(50px);
 }
 
-/* Масштабирование */
 .animate-scale {
   transform: scale(0.8);
 }
 
-/* Задержки */
 [data-delay="100"] {
   transition-delay: 0.1s;
 }
@@ -457,7 +584,19 @@ body {
     margin-top: 10px;
   }
 
-  /* Уменьшаем анимации на мобильных */
+  .carousel-container {
+    flex-direction: column;
+  }
+
+  .carousel-btn {
+    position: static;
+    transform: none;
+  }
+
+  .testimonial-card {
+    padding: 30px 20px;
+  }
+
   .animate-from-left,
   .animate-from-right {
     transform: translateY(30px);

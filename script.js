@@ -1,34 +1,136 @@
 // script.js
 document.addEventListener("DOMContentLoaded", function () {
   // ===== АНИМАЦИИ ПРИ СКРОЛЛЕ =====
-  // Используем Intersection Observer для производительности
-
   const animatedElements = document.querySelectorAll(".animate-on-scroll");
 
-  // Настройки наблюдателя
   const observerOptions = {
-    threshold: 0.2, // Элемент считается видимым, когда 20% его площади в зоне видимости
-    rootMargin: "0px 0px -50px 0px", // Небольшой отступ снизу
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px",
   };
 
-  // Создаем наблюдатель
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      // Если элемент появился в зоне видимости
       if (entry.isIntersecting) {
-        // Добавляем класс animated для запуска анимации
         entry.target.classList.add("animated");
-
-        // Можно прекратить наблюдение за элементом после анимации
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  // Начинаем наблюдение за каждым элементом
   animatedElements.forEach((element) => {
     observer.observe(element);
   });
+
+  // ===== БЕСКОНЕЧНАЯ КАРУСЕЛЬ С ОТЗЫВАМИ =====
+  const track = document.querySelector(".carousel-track");
+  const slides = document.querySelectorAll(".testimonial-card");
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+  const dotsContainer = document.querySelector(".carousel-dots");
+
+  if (track && slides.length > 0) {
+    let currentIndex = 0;
+    const slideCount = slides.length;
+
+    // Создаем точки навигации
+    function createDots() {
+      dotsContainer.innerHTML = "";
+      for (let i = 0; i < slideCount; i++) {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    // Обновление активной точки
+    function updateDots() {
+      const dots = document.querySelectorAll(".dot");
+      dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+          dot.classList.add("active");
+        } else {
+          dot.classList.remove("active");
+        }
+      });
+    }
+
+    // Переход к слайду
+    function goToSlide(index) {
+      if (index < 0) {
+        index = slideCount - 1;
+      } else if (index >= slideCount) {
+        index = 0;
+      }
+
+      currentIndex = index;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots();
+    }
+
+    // Инициализация
+    createDots();
+
+    // Обработчики кнопок
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % slideCount;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots();
+    });
+
+    // Автоматическая прокрутка каждые 5 секунд
+    let autoPlayInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % slideCount;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots();
+    }, 5000);
+
+    // Останавливаем автопрокрутку при наведении
+    track.addEventListener("mouseenter", () => {
+      clearInterval(autoPlayInterval);
+    });
+
+    track.addEventListener("mouseleave", () => {
+      autoPlayInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slideCount;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateDots();
+      }, 5000);
+    });
+
+    // Обработка свайпов на мобильных
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    track.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      if (touchEndX < touchStartX - swipeThreshold) {
+        // Свайп влево - следующий
+        currentIndex = (currentIndex + 1) % slideCount;
+      } else if (touchEndX > touchStartX + swipeThreshold) {
+        // Свайп вправо - предыдущий
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+      }
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots();
+    }
+  }
 
   // ===== ПЛАВНЫЙ СКРОЛЛ =====
   const allLinks = document.querySelectorAll(
@@ -60,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Собираем данные формы
       const formData = new FormData(this);
       const data = {};
       formData.forEach((value, key) => {
@@ -68,18 +169,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       console.log("Данные формы:", data);
-
-      // Красивое уведомление
       showNotification("Спасибо! Форма отправлена (демо-режим).", "success");
-
-      // Очистка формы (опционально)
-      // this.reset();
     });
   }
 
   // Функция для показа уведомления
   function showNotification(message, type = "info") {
-    // Создаем элемент уведомления
     const notification = document.createElement("div");
     notification.textContent = message;
     notification.style.cssText = `
@@ -100,13 +195,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.body.appendChild(notification);
 
-    // Анимация появления
     setTimeout(() => {
       notification.style.transform = "translateY(0)";
       notification.style.opacity = "1";
     }, 10);
 
-    // Удаляем через 3 секунды
     setTimeout(() => {
       notification.style.transform = "translateY(100px)";
       notification.style.opacity = "0";
@@ -156,8 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", updateActiveNavLink);
   updateActiveNavLink();
 
-  // ===== ДОПОЛНИТЕЛЬНО: Анимация для первого экрана при загрузке =====
-  // Чтобы элементы на первом экране тоже анимировались при загрузке страницы
+  // Анимация для первого экрана
   setTimeout(() => {
     const heroElements = document.querySelectorAll(".hero .animate-on-scroll");
     heroElements.forEach((el) => {
