@@ -1,7 +1,7 @@
-// script.js
-document.addEventListener("DOMContentLoaded", function () {
+// script.js - полностью на jQuery
+$(document).ready(function () {
   // ===== АНИМАЦИИ ПРИ СКРОЛЛЕ =====
-  const animatedElements = document.querySelectorAll(".animate-on-scroll");
+  const $animatedElements = $(".animate-on-scroll");
 
   const observerOptions = {
     threshold: 0.2,
@@ -11,47 +11,47 @@ document.addEventListener("DOMContentLoaded", function () {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("animated");
+        $(entry.target).addClass("animated");
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  animatedElements.forEach((element) => {
-    observer.observe(element);
+  $animatedElements.each(function () {
+    observer.observe(this);
   });
 
   // ===== БЕСКОНЕЧНАЯ КАРУСЕЛЬ С ОТЗЫВАМИ =====
-  const track = document.querySelector(".carousel-track");
-  const slides = document.querySelectorAll(".testimonial-card");
-  const prevBtn = document.querySelector(".prev-btn");
-  const nextBtn = document.querySelector(".next-btn");
-  const dotsContainer = document.querySelector(".carousel-dots");
+  const $track = $(".carousel-track");
+  const $slides = $(".testimonial-card");
+  const $prevBtn = $(".prev-btn");
+  const $nextBtn = $(".next-btn");
+  const $dotsContainer = $(".carousel-dots");
 
-  if (track && slides.length > 0) {
+  if ($track.length && $slides.length > 0) {
     let currentIndex = 0;
-    const slideCount = slides.length;
+    const slideCount = $slides.length;
 
     // Создаем точки навигации
     function createDots() {
-      dotsContainer.innerHTML = "";
+      $dotsContainer.empty();
       for (let i = 0; i < slideCount; i++) {
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        if (i === 0) dot.classList.add("active");
-        dot.addEventListener("click", () => goToSlide(i));
-        dotsContainer.appendChild(dot);
+        const $dot = $("<div></div>").addClass("dot");
+        if (i === 0) $dot.addClass("active");
+        $dot.on("click", function () {
+          goToSlide(i);
+        });
+        $dotsContainer.append($dot);
       }
     }
 
     // Обновление активной точки
     function updateDots() {
-      const dots = document.querySelectorAll(".dot");
-      dots.forEach((dot, index) => {
+      $(".dot").each(function (index) {
         if (index === currentIndex) {
-          dot.classList.add("active");
+          $(this).addClass("active");
         } else {
-          dot.classList.remove("active");
+          $(this).removeClass("active");
         }
       });
     }
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       currentIndex = index;
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      $track.css("transform", `translateX(-${currentIndex * 100}%)`);
       updateDots();
     }
 
@@ -73,34 +73,34 @@ document.addEventListener("DOMContentLoaded", function () {
     createDots();
 
     // Обработчики кнопок
-    prevBtn.addEventListener("click", () => {
+    $prevBtn.on("click", function () {
       currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      $track.css("transform", `translateX(-${currentIndex * 100}%)`);
       updateDots();
     });
 
-    nextBtn.addEventListener("click", () => {
+    $nextBtn.on("click", function () {
       currentIndex = (currentIndex + 1) % slideCount;
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      $track.css("transform", `translateX(-${currentIndex * 100}%)`);
       updateDots();
     });
 
     // Автоматическая прокрутка каждые 5 секунд
     let autoPlayInterval = setInterval(() => {
       currentIndex = (currentIndex + 1) % slideCount;
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      $track.css("transform", `translateX(-${currentIndex * 100}%)`);
       updateDots();
     }, 5000);
 
     // Останавливаем автопрокрутку при наведении
-    track.addEventListener("mouseenter", () => {
+    $track.on("mouseenter", function () {
       clearInterval(autoPlayInterval);
     });
 
-    track.addEventListener("mouseleave", () => {
+    $track.on("mouseleave", function () {
       autoPlayInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % slideCount;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        $track.css("transform", `translateX(-${currentIndex * 100}%)`);
         updateDots();
       }, 5000);
     });
@@ -109,12 +109,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let touchStartX = 0;
     let touchEndX = 0;
 
-    track.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
+    $track.on("touchstart", function (e) {
+      touchStartX = e.originalEvent.changedTouches[0].screenX;
     });
 
-    track.addEventListener("touchend", (e) => {
-      touchEndX = e.changedTouches[0].screenX;
+    $track.on("touchend", function (e) {
+      touchEndX = e.originalEvent.changedTouches[0].screenX;
       handleSwipe();
     });
 
@@ -127,45 +127,47 @@ document.addEventListener("DOMContentLoaded", function () {
         // Свайп вправо - предыдущий
         currentIndex = (currentIndex - 1 + slideCount) % slideCount;
       }
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      $track.css("transform", `translateX(-${currentIndex * 100}%)`);
       updateDots();
     }
   }
 
   // ===== ПЛАВНЫЙ СКРОЛЛ =====
-  const allLinks = document.querySelectorAll(
+  const $allLinks = $(
     '.nav-links a[href^="#"], .hero .btn[href^="#"], .hero .btn-outline[href^="#"]',
   );
 
-  allLinks.forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
+  $allLinks.on("click", function (e) {
+    e.preventDefault();
 
-      const targetId = this.getAttribute("href");
-      if (targetId === "#") return;
+    const targetId = $(this).attr("href");
+    if (targetId === "#") return;
 
-      const targetElement = document.querySelector(targetId);
+    const $targetElement = $(targetId);
 
-      if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    });
+    if ($targetElement.length) {
+      $("html, body").animate(
+        {
+          scrollTop: $targetElement.offset().top,
+        },
+        800,
+        "swing",
+      );
+    }
   });
 
   // ===== ОБРАБОТКА ФОРМЫ =====
-  const contactForm = document.querySelector(".contact-form form");
+  const $contactForm = $(".contact-form form");
 
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
+  if ($contactForm.length) {
+    $contactForm.on("submit", function (e) {
       e.preventDefault();
 
-      const formData = new FormData(this);
+      // Собираем данные формы
+      const formData = $(this).serializeArray();
       const data = {};
-      formData.forEach((value, key) => {
-        data[key] = value;
+      $.each(formData, function () {
+        data[this.name] = this.value;
       });
 
       console.log("Данные формы:", data);
@@ -175,85 +177,85 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Функция для показа уведомления
   function showNotification(message, type = "info") {
-    const notification = document.createElement("div");
-    notification.textContent = message;
-    notification.style.cssText = `
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: ${type === "success" ? "#4CAF50" : "#3b3bff"};
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
-            font-weight: 500;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        `;
+    const $notification = $("<div></div>").text(message);
+    $notification.css({
+      position: "fixed",
+      bottom: "30px",
+      right: "30px",
+      background: type === "success" ? "#4CAF50" : "#3b3bff",
+      color: "white",
+      padding: "15px 25px",
+      "border-radius": "50px",
+      "box-shadow": "0 5px 15px rgba(0,0,0,0.2)",
+      "z-index": 1000,
+      "font-weight": 500,
+      transform: "translateY(100px)",
+      opacity: 0,
+      transition: "all 0.3s ease",
+    });
 
-    document.body.appendChild(notification);
+    $("body").append($notification);
 
     setTimeout(() => {
-      notification.style.transform = "translateY(0)";
-      notification.style.opacity = "1";
+      $notification.css({
+        transform: "translateY(0)",
+        opacity: 1,
+      });
     }, 10);
 
     setTimeout(() => {
-      notification.style.transform = "translateY(100px)";
-      notification.style.opacity = "0";
+      $notification.css({
+        transform: "translateY(100px)",
+        opacity: 0,
+      });
       setTimeout(() => {
-        document.body.removeChild(notification);
+        $notification.remove();
       }, 300);
     }, 3000);
   }
 
   // ===== ПОДСВЕТКА АКТИВНОГО ПУНКТА МЕНЮ =====
-  const sections = document.querySelectorAll("section[id]");
+  const $sections = $("section[id]");
 
   function updateActiveNavLink() {
     let current = "";
-    const scrollPosition = window.scrollY + 100;
+    const scrollPosition = $(window).scrollTop() + 100;
 
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
+    $sections.each(function () {
+      const sectionTop = $(this).offset().top;
+      const sectionHeight = $(this).height();
 
       if (
         scrollPosition >= sectionTop &&
         scrollPosition < sectionTop + sectionHeight
       ) {
-        current = section.getAttribute("id");
+        current = $(this).attr("id");
       }
     });
 
-    document.querySelectorAll(".nav-links a").forEach((link) => {
-      link.classList.remove("active");
-      link.style.fontWeight = "500";
-      link.style.color = "#1e1e2f";
+    $(".nav-links a").each(function () {
+      $(this).removeClass("active").css({
+        "font-weight": "500",
+        color: "#1e1e2f",
+      });
     });
 
     if (current) {
-      const activeLink = document.querySelector(
-        `.nav-links a[href="#${current}"]`,
-      );
-      if (activeLink) {
-        activeLink.classList.add("active");
-        activeLink.style.fontWeight = "700";
-        activeLink.style.color = "#3b3bff";
+      const $activeLink = $(`.nav-links a[href="#${current}"]`);
+      if ($activeLink.length) {
+        $activeLink.addClass("active").css({
+          "font-weight": "700",
+          color: "#3b3bff",
+        });
       }
     }
   }
 
-  window.addEventListener("scroll", updateActiveNavLink);
+  $(window).on("scroll", updateActiveNavLink);
   updateActiveNavLink();
 
   // Анимация для первого экрана
   setTimeout(() => {
-    const heroElements = document.querySelectorAll(".hero .animate-on-scroll");
-    heroElements.forEach((el) => {
-      el.classList.add("animated");
-    });
+    $(".hero .animate-on-scroll").addClass("animated");
   }, 300);
 });
