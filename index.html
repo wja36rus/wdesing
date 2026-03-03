@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ВебСтудия — создание сайтов</title>
+    <!-- Подключение шрифта Google Fonts для современного вида -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome для иконок (бесплатно) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Шапка / Навигация -->
+    <nav class="navbar">
+      <div class="container nav-wrapper">
+        <a href="#" class="logo"
+          >Web<span style="color: #1e1e2f">Studio</span></a
+        >
+        <div class="nav-links">
+          <a href="#">Главная</a>
+          <a href="#услуги">Услуги</a>
+          <a href="#портфолио">Портфолио</a>
+          <a href="#контакты">Контакты</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Герой (первый экран) -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>
+            Разработка сайтов, <span>которые работают</span> на ваш бизнес
+          </h1>
+          <p>
+            Создаём современные, быстрые и продающие сайты под ключ. От лендинга
+            до интернет-магазина.
+          </p>
+          <div>
+            <a href="#контакты" class="btn">Обсудить проект</a>
+            <a href="#портфолио" class="btn btn-outline">Портфолио</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <!-- Векторная графика / иконка (можно заменить на свой логотип) -->
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Ccircle cx='200' cy='150' r='120' fill='%23e0e0ff' /%3E%3Cpath d='M140 110 L260 110 L230 190 L170 190 Z' fill='%233b3bff' opacity='0.7' /%3E%3Ccircle cx='160' cy='140' r='15' fill='white' /%3E%3Ccircle cx='240' cy='140' r='15' fill='white' /%3E%3Cpath d='M180 190 L220 190 L210 220 L190 220 Z' fill='%232a2ad9' /%3E%3C/svg%3E"
+            alt="Разработка сайтов"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Преимущества (почему мы) -->
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">Почему выбирают нас</h2>
+        <p class="section-subtitle">
+          Мы не просто пишем код — мы создаём инструмент для роста вашего
+          бизнеса
+        </p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+            <h3>Быстрый старт</h3>
+            <p>
+              Готовность проекта от 7 дней. Начните получать заявки уже в этом
+              месяце.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Адаптивность</h3>
+            <p>
+              Идеально смотрится на всех устройствах: от смартфона до большого
+              монитора.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-search"></i></div>
+            <h3>SEO оптимизация</h3>
+            <p>
+              Правильная структура кода и метатеги — помогаем поисковикам
+              полюбить вас.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-headset"></i></div>
+            <h3>Поддержка</h3>
+            <p>
+              После сдачи проекта не бросаем — помогаем с наполнением и
+              доработками.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services" id="услуги">
+      <div class="container">
+        <h2 class="section-title">Наши услуги</h2>
+        <p class="section-subtitle">
+          Прозрачные цены и индивидуальный подход к каждой задаче
+        </p>
+        <div class="services-grid">
+          <div class="service-item">
+            <i class="fas fa-globe fa-2x" style="color: #3b3bff"></i>
+            <h3>Сайт-визитка</h3>
+            <div class="service-price">от 45 000 ₽</div>
+            <p class="service-descr">
+              Кратко о компании, услуги, контакты — всё что нужно для первого
+              впечатления.
+            </p>
+          </div>
+          <div class="service-item">
+            <i class="fas fa-shopping-cart fa-2x" style="color: #3b3bff"></i>
+            <h3>Интернет-магазин</h3>
+            <div class="service-price">от 120 000 ₽</div>
+            <p class="service-descr">
+              Каталог, корзина, оплата и доставка — полноценная торговля онлайн.
+            </p>
+          </div>
+          <div class="service-item">
+            <i class="fas fa-tachometer-alt fa-2x" style="color: #3b3bff"></i>
+            <h3>Landing page</h3>
+            <div class="service-price">от 35 000 ₽</div>
+            <p class="service-descr">
+              Одностраничный сайт для сбора лидов и рекламных кампаний.
+            </p>
+          </div>
+          <div class="service-item">
+            <i class="fas fa-cogs fa-2x" style="color: #3b3bff"></i>
+            <h3>Поддержка / доработка</h3>
+            <div class="service-price">от 5 000 ₽/мес</div>
+            <p class="service-descr">
+              Техническая поддержка, обновление контента, мелкие правки.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section class="portfolio" id="портфолио">
+      <div class="container">
+        <h2 class="section-title">Последние проекты</h2>
+        <p class="section-subtitle">
+          Каждый проект уникален — вот несколько примеров наших работ
+        </p>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <div class="portfolio-img">
+              <i class="fas fa-laptop-code fa-3x"></i>
+            </div>
+            <div class="portfolio-info">
+              <h4>Студия красоты "Эстетика"</h4>
+              <p>Сайт-визитка с онлайн-записью</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-img">
+              <i class="fas fa-store fa-3x"></i>
+            </div>
+            <div class="portfolio-info">
+              <h4>Магазин фермерских продуктов</h4>
+              <p>Интернет-магазин с корзиной и оплатой</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-img">
+              <i class="fas fa-briefcase fa-3x"></i>
+            </div>
+            <div class="portfolio-info">
+              <h4>Логистическая компания "Путь"</h4>
+              <p>Корпоративный сайт с личным кабинетом</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Контакты и форма обратной связи -->
+    <section class="contact" id="контакты">
+      <div class="container">
+        <div class="contact-info">
+          <h2>Давайте обсудим ваш проект</h2>
+          <p>
+            Оставьте заявку прямо сейчас, и мы свяжемся с вами в ближайшее
+            время, чтобы обсудить детали и сделать вам предложение.
+          </p>
+          <ul class="contact-details">
+            <li><i class="fas fa-phone-alt"></i> +7 (999) 123-45-67</li>
+            <li><i class="fas fa-envelope"></i> hello@webstudio.ru</li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i> Москва, ул. Программная, 15
+            </li>
+          </ul>
+          <div style="margin-top: 30px">
+            <a href="#" style="color: white; margin-right: 20px"
+              ><i class="fab fa-telegram fa-2x"></i
+            ></a>
+            <a href="#" style="color: white; margin-right: 20px"
+              ><i class="fab fa-whatsapp fa-2x"></i
+            ></a>
+            <a href="#" style="color: white"><i class="fab fa-vk fa-2x"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form action="#" method="post">
+            <input type="text" placeholder="Ваше имя" required />
+            <input type="email" placeholder="Email" required />
+            <input type="tel" placeholder="Телефон" />
+            <textarea placeholder="Расскажите о вашей задаче..."></textarea>
+            <button type="submit" class="btn">Отправить сообщение</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+      <div class="container">
+        <p>© 2025 WebStudio — разработка сайтов под ключ</p>
+        <p>
+          <a href="#">Политика конфиденциальности</a> |
+          <a href="#">Договор оферты</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Плавный скролл к якорям (простой JS) -->
+    <script>
+      document.querySelectorAll('.nav-links a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+      document
+        .querySelector('.hero .btn[href="#контакты"]')
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector("#контакты");
+          if (target) target.scrollIntoView({ behavior: "smooth" });
+        });
+      document
+        .querySelector('.hero .btn-outline[href="#портфолио"]')
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector("#портфолио");
+          if (target) target.scrollIntoView({ behavior: "smooth" });
+        });
+    </script>
+  </body>
+</html>
