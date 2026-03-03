@@ -65,7 +65,7 @@ body {
 
 /* Герой */
 .hero {
-  padding: 311px 0;
+  padding: 17vw 0px;
   /* background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 100%); */
   background-image: url("./images/bg.jpg");
   background-size: cover;
@@ -196,7 +196,7 @@ body {
 
 /* Услуги */
 .services {
-  padding: 244px 0;
+  padding: 8vw 0;
   background-color: #000000;
 }
 
@@ -232,7 +232,7 @@ body {
 
 /* Портфолио */
 .portfolio {
-  padding: 234px 0;
+  padding: 12vw 0;
 }
 
 .portfolio-grid {
@@ -289,7 +289,7 @@ body {
 
 /* СЕКЦИЯ: ОТЗЫВЫ */
 .testimonials {
-  padding: 209px 0;
+  padding: 11vw 0px;
   color: white;
 }
 
@@ -415,7 +415,7 @@ body {
 
 /* Контакты */
 .contact {
-  padding: 195px 0;
+  padding: 10vw 0;
   background: linear-gradient(0deg, #3ab6ce 0%, #000000 100%);
   color: white;
 }
@@ -728,5 +728,15 @@ body {
 
   .tech-name {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero,
+  .services,
+  .portfolio,
+  .testimonials,
+  .contact {
+    padding: 20vh 0;
   }
 }
