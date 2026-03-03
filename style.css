@@ -310,6 +310,8 @@ body {
   overflow: hidden;
   flex: 1;
   border-radius: 24px;
+  position: relative;
+  width: 100%;
 }
 
 .carousel-track {
@@ -597,7 +599,7 @@ body {
   }
 
   .testimonial-card {
-    padding: 30px 20px;
+    padding: 30px 24px;
   }
 
   .animate-from-left,
